@@ -252,7 +252,6 @@
     </div>
     <div class="footer-base">
       <p>&copy; <?= date('Y') ?> Chevron CEMCS Microfinance Bank (RC 856802). All rights reserved. Deposits insured by NDIC.</p>
-      <p>6, Udeco Medical Road, Chevyview Estate, Off Chevron Drive, Lekki, Lagos.</p>
     </div>
   </div>
 </footer>

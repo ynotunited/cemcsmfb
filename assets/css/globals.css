@@ -230,6 +230,7 @@ hr.divider  { border: none; border-top: 1px solid var(--border); }
   text-decoration: none;
   border: none;
   cursor: pointer;
+  color: var(--txt-1);
 }
 .btn:hover  { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); transition-duration: 80ms; }
@@ -253,21 +254,38 @@ hr.divider  { border: none; border-top: 1px solid var(--border); }
 .btn-primary:hover::before {
   left: 150%;
 }
-.btn-primary:hover { background: var(--brand-blue-dark); box-shadow: var(--s-2); color: var(--n-0); }
+.btn-primary:hover,
+.btn-primary:hover .btn-label,
+.btn-primary:focus-visible,
+.btn-primary:focus-visible .btn-label {
+  background: var(--brand-blue-dark);
+  box-shadow: var(--s-2);
+  color: var(--n-0);
+}
 
 .btn-ghost {
   background: transparent;
   color: var(--txt-2);
   border: 1px solid var(--border);
 }
-.btn-ghost:hover { background: var(--n-100); color: var(--txt-1); border-color: var(--n-300); }
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: var(--n-100);
+  color: var(--txt-1);
+  border-color: var(--n-300);
+}
 
 .btn-outline {
   background: transparent;
   color: var(--txt-2);
   border: 1px solid var(--border);
 }
-.btn-outline:hover { background: var(--n-100); color: var(--txt-1); border-color: var(--n-300); }
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background: var(--n-100);
+  color: var(--txt-1);
+  border-color: var(--n-300);
+}
 
 .btn-lg { padding: 14px var(--s8); font-size: var(--t-base); }
 .btn-sm { padding: 8px var(--s4); font-size: var(--t-xs); letter-spacing: .03em; }
