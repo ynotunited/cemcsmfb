@@ -232,6 +232,21 @@ hr.divider  { border: none; border-top: 1px solid var(--border); }
   cursor: pointer;
   color: var(--txt-1);
 }
+.btn,
+.btn:link,
+.btn:visited,
+.btn:hover,
+.btn:focus,
+.btn:focus-visible,
+.btn:active {
+  text-decoration: none !important;
+}
+.btn .btn-label {
+  position: relative;
+  z-index: 1;
+  text-decoration: none !important;
+  color: inherit !important;
+}
 .btn:hover  { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); transition-duration: 80ms; }
 .btn:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 3px; }
@@ -241,6 +256,9 @@ hr.divider  { border: none; border-top: 1px solid var(--border); }
   color: var(--n-0);
   box-shadow: var(--s-1);
   overflow: hidden;
+}
+.btn-primary .btn-label {
+  color: var(--n-0) !important;
 }
 .btn-primary::before {
   content: '';
@@ -265,8 +283,11 @@ hr.divider  { border: none; border-top: 1px solid var(--border); }
 
 .btn-ghost {
   background: transparent;
-  color: var(--txt-2);
+  color: var(--brand-blue);
   border: 1px solid var(--border);
+}
+.btn-ghost .btn-label {
+  color: var(--brand-blue) !important;
 }
 .btn-ghost:hover,
 .btn-ghost:focus-visible {
@@ -279,6 +300,9 @@ hr.divider  { border: none; border-top: 1px solid var(--border); }
   background: transparent;
   color: var(--txt-2);
   border: 1px solid var(--border);
+}
+.btn-outline .btn-label {
+  color: var(--txt-2) !important;
 }
 .btn-outline:hover,
 .btn-outline:focus-visible {
