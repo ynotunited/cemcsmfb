@@ -271,7 +271,10 @@
 <header class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="<?= APP_URL ?>/" class="nav-logo">
-      <img src="<?= APP_URL ?>/assets/images/cemcs-logo-colored-255x68.png" alt="Chevron CEMCS MFB" style="height: 44px; width: auto;">
+      <picture>
+        <source media="(max-width: 640px)" srcset="<?= APP_URL ?>/assets/images/cemcs-logo-sticky-mobile.png">
+        <img class="nav-logo-image" src="<?= APP_URL ?>/assets/images/cemcs-logo-colored-255x68.png" alt="Chevron CEMCS MFB">
+      </picture>
     </a>
     <ul class="nav-links">
       <li class="has-submenu">
