@@ -1,14 +1,21 @@
 <?php
 
-// ─── Database ────────────────────────────────────────────────────────────────
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'cemcsmfb_db');
-
 // ─── Application ─────────────────────────────────────────────────────────────
 define('APP_NAME', 'Chevron CEMCS MFB');
-define('APP_ENV',  'development'); // Change to 'production' on live server
+
+$currentHost = $_SERVER['HTTP_HOST'] ?? '';
+$isLocalHost = in_array($currentHost, ['localhost', '127.0.0.1'], true);
+
+// Default to production on hosted environments unless explicitly overridden.
+define('APP_ENV', getenv('APP_ENV') ?: ($isLocalHost ? 'development' : 'production'));
+
+// ─── Database ────────────────────────────────────────────────────────────────
+// Local development stays on localhost, while production uses the Byet Host
+// MySQL details unless env vars override them.
+define('DB_HOST', getenv('DB_HOST') ?: (APP_ENV === 'production' ? 'sql113.byethost3.com' : 'localhost'));
+define('DB_USER', getenv('DB_USER') ?: (APP_ENV === 'production' ? 'b3_41782053' : 'root'));
+define('DB_PASS', getenv('DB_PASS') ?: (APP_ENV === 'production' ? 'vn#tqVb44L73ES.' : ''));
+define('DB_NAME', getenv('DB_NAME') ?: (APP_ENV === 'production' ? 'b3_41782053_cemcsmfb' : 'cemcsmfb_db'));
 
 // Use dynamically detected base paths when deployed on cPanel
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';

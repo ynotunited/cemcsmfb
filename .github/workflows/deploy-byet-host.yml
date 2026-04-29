@@ -22,11 +22,11 @@ jobs:
       - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          server: ${{ secrets.BYET_FTP_SERVER }}
-          username: ${{ secrets.BYET_FTP_USERNAME }}
-          password: ${{ secrets.BYET_FTP_PASSWORD }}
+          server: ftpupload.net
+          username: b3_41782053
+          password: vn#tqVb44L73ES.
           protocol: ftps
-          server-dir: ${{ secrets.BYET_SERVER_DIR }}
+          server-dir: htdocs/
           exclude: |
             **/.git*
             **/.git*/**
