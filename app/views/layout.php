@@ -45,6 +45,124 @@
     /* ── PAGE BODY OFFSET ────────────────────────────── */
     .app-main { padding-top: 0; }
 
+    /* ── MOBILE NAV ──────────────────────────────────── */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      cursor: pointer;
+      padding: 8px;
+      flex-shrink: 0;
+    }
+    .mobile-menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--txt-1);
+      border-radius: 2px;
+      transition: transform 0.25s var(--ease-o), opacity 0.25s var(--ease-o);
+    }
+    .mobile-menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none !important; }
+      .mobile-menu-toggle { display: flex !important; }
+    }
+
+    /* Mobile menu sheet */
+    .mobile-menu-overlay {
+      position: fixed; inset: 0; background: rgba(15,13,11,.5);
+      z-index: 200; opacity: 0; transition: opacity .3s var(--ease-o);
+    }
+    .mobile-menu-overlay.open { opacity: 1; }
+    .mobile-menu-sheet {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(340px, 92vw);
+      background: var(--surface);
+      z-index: 201;
+      transform: translateX(100%);
+      transition: transform .35s var(--ease);
+      overflow-y: auto;
+      box-shadow: var(--s-3);
+    }
+    .mobile-menu-sheet.open { transform: translateX(0); }
+    .mobile-menu-shell { display: flex; flex-direction: column; min-height: 100%; }
+    .mobile-menu-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: var(--s5) var(--s6);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--surface); z-index: 1;
+    }
+    .mobile-menu-head h2 {
+      font-family: var(--f-display); font-size: var(--t-xl);
+      font-weight: 700; letter-spacing: -.01em; margin: 0;
+    }
+    .mobile-menu-kicker {
+      font-family: var(--f-mono); font-size: var(--t-xs);
+      color: var(--brand-blue); letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 2px;
+    }
+    .mobile-menu-close {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--n-100); border: 1px solid var(--border);
+      font-size: 20px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; color: var(--txt-2);
+      transition: background .15s, transform .2s;
+    }
+    .mobile-menu-close:hover { background: var(--n-200); transform: rotate(90deg); }
+    .mobile-menu-hero {
+      padding: var(--s6);
+      background: var(--n-50);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s4);
+    }
+    .mobile-menu-label {
+      font-family: var(--f-mono); font-size: var(--t-xs);
+      color: var(--brand-blue); letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: var(--s2);
+    }
+    .mobile-menu-hero-copy h3 {
+      font-family: var(--f-display); font-size: var(--t-lg);
+      font-weight: 700; letter-spacing: -.01em; margin-bottom: var(--s1);
+    }
+    .mobile-menu-hero-copy p { font-size: var(--t-sm); color: var(--txt-2); }
+    .mobile-menu-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu-card {
+      background: var(--surface); padding: var(--s4) var(--s5);
+      text-decoration: none; display: block;
+      transition: background .15s;
+    }
+    .mobile-menu-card:hover { background: var(--n-50); }
+    .mobile-menu-card span {
+      display: block; font-family: var(--f-mono); font-size: var(--t-xs);
+      color: var(--txt-3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px;
+    }
+    .mobile-menu-card strong {
+      display: block; font-family: var(--f-display); font-size: var(--t-base);
+      font-weight: 700; color: var(--txt-1);
+    }
+    .mobile-menu-list { padding: var(--s4) 0; flex: 1; }
+    .mobile-menu-link {
+      display: block; padding: 13px var(--s6);
+      font-size: var(--t-base); font-weight: 500; color: var(--txt-1);
+      text-decoration: none; border-bottom: 1px solid var(--border-sub);
+      transition: background .15s, color .15s;
+    }
+    .mobile-menu-link:hover { background: var(--n-50); color: var(--brand-blue); }
+    .mobile-menu-link:last-child { border-bottom: none; }
+
     /* ── SMART CHATBOT WIDGET ────────────────────────── */
     .chatbot-fab {
       position: fixed;
@@ -381,6 +499,7 @@
     }
     mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
     mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobileToggle.classList.toggle('is-open', open);
     document.body.classList.toggle('menu-open', open);
   }
 
