@@ -220,7 +220,7 @@
 </header>
 
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" hidden></div>
-<aside class="mobile-menu-sheet" id="mobileMenu" aria-hidden="true">
+<aside class="mobile-menu-sheet" id="mobileMenu" aria-hidden="true" hidden>
   <div class="mobile-menu-shell">
     <div class="mobile-menu-head">
       <div>
@@ -364,9 +364,19 @@
 
   function setMobileMenu(open) {
     if (!mobileMenu || !mobileOverlay || !mobileToggle) return;
-    mobileMenu.classList.toggle('open', open);
-    mobileOverlay.classList.toggle('open', open);
-    mobileOverlay.hidden = !open;
+    if (open) {
+      mobileMenu.hidden = false;
+      mobileOverlay.hidden = false;
+      requestAnimationFrame(() => {
+        mobileMenu.classList.add('open');
+        mobileOverlay.classList.add('open');
+      });
+    } else {
+      mobileMenu.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      mobileMenu.hidden = true;
+      mobileOverlay.hidden = true;
+    }
     mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
     mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.body.classList.toggle('menu-open', open);

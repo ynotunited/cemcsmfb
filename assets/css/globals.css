@@ -831,6 +831,7 @@ textarea.form-control { resize: vertical; }
 }
 
 .mobile-menu-overlay {
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(15,13,11,.4);
@@ -842,11 +843,13 @@ textarea.form-control { resize: vertical; }
   transition: opacity var(--t-base) var(--ease-o);
 }
 .mobile-menu-overlay.open {
+  display: block;
   opacity: 1;
   pointer-events: auto;
 }
 
 .mobile-menu-sheet {
+  display: none;
   position: fixed;
   top: var(--nav-h);
   left: 0;
@@ -859,6 +862,7 @@ textarea.form-control { resize: vertical; }
   transition: opacity var(--t-base) var(--ease-o), transform var(--t-base) var(--ease-o);
 }
 .mobile-menu-sheet.open {
+  display: block;
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
@@ -1779,3 +1783,54 @@ body.menu-open { overflow: hidden; }
 .modal-overlay.active .bio-text p:nth-child(4) { transition-delay: 0.6s; }
 
 .bio-text p:last-child { margin-bottom: 0; }
+
+/* Mobile header/app-shell fixes must win over earlier desktop nav rules. */
+@media (max-width: 640px) {
+  .nav-inner {
+    gap: var(--s3);
+    padding: 0 var(--s4);
+  }
+
+  .nav-logo img {
+    height: 36px !important;
+    width: auto !important;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-cta {
+    margin-left: auto;
+  }
+
+  .nav-cta .btn-primary {
+    padding: 8px 12px;
+    font-size: var(--t-xs);
+    border-radius: 999px;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  .mobile-menu-sheet,
+  .mobile-menu-overlay {
+    left: 0;
+    right: 0;
+  }
+
+  .mobile-menu-shell {
+    padding: var(--s4);
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+  }
+
+  .mobile-menu-hero {
+    gap: var(--s3);
+  }
+
+  .mobile-menu-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
