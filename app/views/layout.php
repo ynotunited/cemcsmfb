@@ -46,6 +46,23 @@
     .app-main { padding-top: 0; }
 
     /* ── MOBILE NAV ──────────────────────────────────── */
+    .nav-logo-image {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: var(--nav-h);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--s3);
+      margin-left: var(--s6);
+      flex-shrink: 0;
+    }
     .mobile-menu-toggle {
       display: none;
       flex-direction: column;
