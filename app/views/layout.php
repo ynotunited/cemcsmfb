@@ -155,6 +155,11 @@
     <a href="<?= APP_URL ?>/" class="nav-logo">
       <img src="<?= APP_URL ?>/assets/images/cemcs-logo-colored-255x68.png" alt="Chevron CEMCS MFB" style="height: 44px; width: auto;">
     </a>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-links">
       <li class="has-submenu">
         <a href="<?= APP_URL ?>/about" class="<?= in_array($current_uri, ['about', 'directors', 'management', 'quality-policy', 'careers', 'help', 'contact', 'blog']) ? 'active' : '' ?>">Company</a>
@@ -213,6 +218,56 @@
     </div>
   </div>
 </header>
+
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" hidden></div>
+<aside class="mobile-menu-sheet" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-shell">
+    <div class="mobile-menu-head">
+      <div>
+        <p class="mobile-menu-kicker">Quick access</p>
+        <h2>Menu</h2>
+      </div>
+      <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Close menu">&times;</button>
+    </div>
+
+    <div class="mobile-menu-hero">
+      <div class="mobile-menu-hero-copy">
+        <p class="mobile-menu-label">CEMCS MFB</p>
+        <h3>Banking that feels like an app.</h3>
+        <p>Accounts, loans, forms, and support in one clean mobile flow.</p>
+      </div>
+      <a class="mobile-menu-cta btn btn-primary btn-sm" href="https://cemcsmfb.qoreonline.com/dashboard/home" target="_blank" rel="noopener">Internet Banking</a>
+    </div>
+
+    <div class="mobile-menu-grid">
+      <a class="mobile-menu-card" href="<?= APP_URL ?>/current-account">
+        <span>Accounts</span>
+        <strong>Open & manage</strong>
+      </a>
+      <a class="mobile-menu-card" href="<?= APP_URL ?>/loans">
+        <span>Loans</span>
+        <strong>Apply now</strong>
+      </a>
+      <a class="mobile-menu-card" href="<?= APP_URL ?>/forms">
+        <span>Forms</span>
+        <strong>Downloads</strong>
+      </a>
+      <a class="mobile-menu-card" href="<?= APP_URL ?>/contact">
+        <span>Support</span>
+        <strong>Talk to us</strong>
+      </a>
+    </div>
+
+    <nav class="mobile-menu-list" aria-label="Mobile navigation">
+      <a href="<?= APP_URL ?>/about" class="mobile-menu-link">About CEMCS MFB</a>
+      <a href="<?= APP_URL ?>/personal" class="mobile-menu-link">Accounts</a>
+      <a href="<?= APP_URL ?>/loans" class="mobile-menu-link">Loan Products</a>
+      <a href="<?= APP_URL ?>/forms" class="mobile-menu-link">Forms</a>
+      <a href="<?= APP_URL ?>/contact" class="mobile-menu-link">Contact</a>
+      <a href="<?= APP_URL ?>/branches" class="mobile-menu-link">Branch Locator</a>
+    </nav>
+  </div>
+</aside>
 
 <main class="app-main">
   <?= $content ?? '' ?>
@@ -300,6 +355,34 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Mobile menu
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileMenuOverlay');
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const mobileClose = document.getElementById('mobileMenuClose');
+
+  function setMobileMenu(open) {
+    if (!mobileMenu || !mobileOverlay || !mobileToggle) return;
+    mobileMenu.classList.toggle('open', open);
+    mobileOverlay.classList.toggle('open', open);
+    mobileOverlay.hidden = !open;
+    mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('menu-open', open);
+  }
+
+  if (mobileToggle && mobileMenu && mobileOverlay) {
+    mobileToggle.addEventListener('click', () => setMobileMenu(!mobileMenu.classList.contains('open')));
+    mobileClose?.addEventListener('click', () => setMobileMenu(false));
+    mobileOverlay.addEventListener('click', () => setMobileMenu(false));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMobileMenu(false));
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMobileMenu(false);
+    });
+  }
 </script>
 
 <button class="chatbot-fab" id="chatbot-fab" type="button">Chat With Us</button>
