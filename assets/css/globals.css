@@ -1888,6 +1888,7 @@ body.menu-open { overflow: hidden; }
     width: 100%;
     justify-content: flex-end;
     gap: 6px;
+    padding-right: 6px;
   }
 
   .nav-cta .btn-primary {
@@ -1919,6 +1920,7 @@ body.menu-open { overflow: hidden; }
 
   .nav-actions {
     gap: 4px;
+    padding-right: 8px;
   }
 
   .nav-cta .btn-primary {
