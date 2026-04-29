@@ -4,7 +4,10 @@
 define('APP_NAME', 'Chevron CEMCS MFB');
 
 $currentHost = $_SERVER['HTTP_HOST'] ?? '';
-$isLocalHost = in_array($currentHost, ['localhost', '127.0.0.1'], true);
+$isLocalHost = in_array($currentHost, ['localhost', '127.0.0.1'], true)
+    || str_ends_with($currentHost, '.test')
+    || str_ends_with($currentHost, '.localhost')
+    || str_ends_with($currentHost, '.local');
 
 // Default to production on hosted environments unless explicitly overridden.
 define('APP_ENV', getenv('APP_ENV') ?: ($isLocalHost ? 'development' : 'production'));

@@ -2,15 +2,12 @@
 <!-- Meta description injected via layout -->
 <?php endif; ?>
 
-<section style="padding-top:calc(var(--nav-h) + var(--s16));padding-bottom:var(--s24);">
-  <div class="wrap" style="max-width:900px;">
-    <div class="managed-content">
-      <?= $managed_content ?>
-    </div>
-  </div>
-</section>
+<div class="managed-content">
+  <?= $managed_content ?>
+</div>
 
 <style>
+  /* Keep managed pages roomy enough to preserve the original site structure. */
   .managed-content { font-family: var(--f-body); font-size: var(--t-base); line-height: var(--lh-relaxed); color: var(--txt-1); }
   .managed-content h1 { font-family: var(--f-display); font-size: clamp(32px,4.5vw,var(--t-4xl)); font-weight: 700; letter-spacing: -.025em; line-height: var(--lh-tight); margin-bottom: var(--s6); }
   .managed-content h2 { font-family: var(--f-display); font-size: var(--t-2xl); font-weight: 700; letter-spacing: -.02em; margin-top: var(--s10); margin-bottom: var(--s4); }
