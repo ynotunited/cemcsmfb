@@ -136,6 +136,7 @@
 ═══════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html { -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--f-body);
   font-size: var(--t-base);
@@ -1849,5 +1850,32 @@ body.menu-open { overflow: hidden; }
 
   .mobile-menu-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .nav-inner {
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .nav-logo img {
+    height: 24px !important;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-cta .btn-primary {
+    min-height: 34px;
+    padding: 0 9px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
   }
 }
