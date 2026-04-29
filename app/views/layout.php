@@ -8,6 +8,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="<?= APP_URL ?>/assets/images/cemcs-logo-favicon.png">
   <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/globals.css">
+  <style>
+    /* Button safety overrides so stale cached CSS cannot hide labels or add underlines. */
+    .btn,
+    .btn:link,
+    .btn:visited,
+    .btn:hover,
+    .btn:focus,
+    .btn:focus-visible,
+    .btn:active {
+      text-decoration: none !important;
+    }
+    .btn .btn-label {
+      color: inherit !important;
+      text-decoration: none !important;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-primary,
+    .btn-primary .btn-label {
+      color: #fff !important;
+    }
+    .btn-ghost,
+    .btn-ghost .btn-label {
+      color: var(--brand-blue) !important;
+    }
+    .btn-outline,
+    .btn-outline .btn-label {
+      color: var(--txt-2) !important;
+    }
+  </style>
   <?php if (!empty($recaptcha_site_key) && $recaptcha_site_key !== 'YOUR_RECAPTCHA_SITE_KEY'): ?>
   <script src="https://www.google.com/recaptcha/api.js?render=<?= htmlspecialchars($recaptcha_site_key) ?>"></script>
   <?php endif; ?>
