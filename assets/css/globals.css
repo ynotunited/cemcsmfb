@@ -675,12 +675,12 @@ textarea.form-control { resize: vertical; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .nav-inner    { gap: var(--s3); padding: 0 var(--s4); }
-  .nav-logo img { height: 36px !important; }
+  .nav-inner    { gap: var(--s2); padding: 0 14px; }
+  .nav-logo img { height: 30px !important; width: auto !important; }
   .nav-links    { display: none; }
-  .nav-cta      { margin-left: 0; }
-  .nav-cta .btn-primary { padding: 8px 12px; font-size: var(--t-xs); border-radius: 999px; }
-  .mobile-menu-toggle { display: inline-flex; }
+  .nav-actions  { gap: var(--s2); margin-left: auto; }
+  .nav-cta .btn-primary { padding: 8px 10px; font-size: 11px; border-radius: 999px; }
+  .mobile-menu-toggle { display: inline-flex; width: 40px; height: 40px; }
   .feat-grid    { grid-template-columns: 1fr; }
   .stats-band   { grid-template-columns: 1fr 1fr; padding: var(--s8) var(--s6); }
   .cta-form     { flex-direction: column; }
@@ -805,7 +805,14 @@ textarea.form-control { resize: vertical; }
   margin-left: 2px;
   opacity: 0.6;
 }
-.nav-cta { display: flex; align-items: center; gap: var(--s3); margin-left: var(--s6); flex-shrink: 0; }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.nav-cta { display: flex; align-items: center; gap: var(--s3); margin-left: 0; flex-shrink: 0; }
 
 .mobile-menu-toggle {
   display: none;
@@ -1787,12 +1794,12 @@ body.menu-open { overflow: hidden; }
 /* Mobile header/app-shell fixes must win over earlier desktop nav rules. */
 @media (max-width: 640px) {
   .nav-inner {
-    gap: var(--s3);
-    padding: 0 var(--s4);
+    gap: var(--s2);
+    padding: 0 14px;
   }
 
   .nav-logo img {
-    height: 36px !important;
+    height: 30px !important;
     width: auto !important;
   }
 
@@ -1800,18 +1807,21 @@ body.menu-open { overflow: hidden; }
     display: none !important;
   }
 
-  .nav-cta {
+  .nav-actions {
+    gap: var(--s2);
     margin-left: auto;
   }
 
   .nav-cta .btn-primary {
-    padding: 8px 12px;
-    font-size: var(--t-xs);
+    padding: 8px 10px;
+    font-size: 11px;
     border-radius: 999px;
   }
 
   .mobile-menu-toggle {
     display: inline-flex !important;
+    width: 40px;
+    height: 40px;
   }
 
   .mobile-menu-sheet,

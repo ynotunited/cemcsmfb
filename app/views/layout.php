@@ -155,11 +155,6 @@
     <a href="<?= APP_URL ?>/" class="nav-logo">
       <img src="<?= APP_URL ?>/assets/images/cemcs-logo-colored-255x68.png" alt="Chevron CEMCS MFB" style="height: 44px; width: auto;">
     </a>
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
     <ul class="nav-links">
       <li class="has-submenu">
         <a href="<?= APP_URL ?>/about" class="<?= in_array($current_uri, ['about', 'directors', 'management', 'quality-policy', 'careers', 'help', 'contact', 'blog']) ? 'active' : '' ?>">Company</a>
@@ -213,8 +208,15 @@
 
       <li><a href="<?= APP_URL ?>/forms" class="<?= $current_uri == 'forms' ? 'active' : '' ?>">Forms</a></li>
     </ul>
-    <div class="nav-cta">
-      <a href="https://cemcsmfb.qoreonline.com/dashboard/home" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Internet Banking</a>
+    <div class="nav-actions">
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-cta">
+        <a href="https://cemcsmfb.qoreonline.com/dashboard/home" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Internet Banking</a>
+      </div>
     </div>
   </div>
 </header>
