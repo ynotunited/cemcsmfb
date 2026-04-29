@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chevron CEMCS MFB — Brand Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-primary:   #1A82C4;
+    --blue-dark:      #0A5EA0;
+    --blue-deep:      #064580;
+    --red-primary:    #D9232E;
+    --red-dark:       #B01820;
+    --white:          #FFFFFF;
+    --off-white:      #F5F7FA;
+    --neutral-100:    #EEF1F5;
+    --neutral-300:    #C8D0DC;
+    --neutral-500:    #8494A8;
+    --neutral-700:    #3D4F63;
+    --neutral-900:    #0F1C2D;
+    --serif:          'Cormorant Garamond', Georgia, serif;
+    --sans:           'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--off-white);
+    color: var(--neutral-900);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--neutral-900);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10vw;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 600px; height: 600px;
+    background: conic-gradient(from 200deg at 60% 40%, var(--blue-primary) 0deg, var(--blue-dark) 80deg, transparent 140deg);
+    border-radius: 50%;
+    opacity: .15;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 5vw;
+    width: 420px; height: 420px;
+    background: conic-gradient(from 10deg at 40% 60%, var(--red-primary) 0deg, var(--red-dark) 60deg, transparent 100deg);
+    border-radius: 50%;
+    opacity: .12;
+  }
+
+  .cover-chevron {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-chevron svg {
+    width: 120px;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--blue-primary);
+    margin-bottom: 20px;
+  }
+
+  .cover h1 {
+    font-family: var(--serif);
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cover h1 span {
+    color: var(--blue-primary);
+  }
+
+  .cover-sub {
+    font-family: var(--serif);
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 300;
+    color: var(--neutral-500);
+    margin-bottom: 48px;
+    letter-spacing: .02em;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    color: var(--neutral-500);
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 32px;
+  }
+
+  .cover-meta strong {
+    display: block;
+    color: var(--white);
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION WRAPPERS ── */
+  .section {
+    padding: 96px 10vw;
+    border-bottom: 1px solid var(--neutral-300);
+  }
+
+  .section:last-child { border-bottom: none; }
+  .section-alt { background: var(--white); }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--blue-primary);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 400;
+    color: var(--neutral-900);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--neutral-700);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  /* ── LOGO SECTION ── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .logo-card {
+    border-radius: 4px;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .logo-card.on-white { background: #fff; border: 1px solid var(--neutral-300); }
+  .logo-card.on-dark   { background: var(--neutral-900); }
+  .logo-card.on-blue   { background: var(--blue-primary); }
+  .logo-card.on-red    { background: var(--red-primary); }
+
+  .logo-card-label {
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .on-white .logo-card-label  { color: var(--neutral-500); }
+  .on-dark  .logo-card-label  { color: rgba(255,255,255,.45); }
+  .on-blue  .logo-card-label  { color: rgba(255,255,255,.65); }
+  .on-red   .logo-card-label  { color: rgba(255,255,255,.65); }
+
+  /* SVG Logo Component */
+  .brand-logo { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .brand-logo .logo-text-chevron {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: .04em;
+  }
+  .brand-logo .logo-text-cemcs {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .12em;
+  }
+
+  .clearspace-diagram {
+    margin-top: 48px;
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    border-radius: 4px;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .clearspace-inner {
+    display: inline-block;
+    position: relative;
+    padding: 36px;
+    border: 2px dashed var(--red-primary);
+  }
+
+  .clearspace-label {
+    font-size: 11px;
+    color: var(--neutral-500);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+
+  /* ── COLORS ── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .color-chip {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--neutral-300);
+  }
+
+  .color-swatch {
+    height: 130px;
+    position: relative;
+  }
+
+  .color-swatch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.12) 0%, transparent 60%);
+  }
+
+  .color-info {
+    padding: 16px 18px;
+    background: var(--white);
+  }
+
+  .color-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--neutral-900);
+    margin-bottom: 4px;
+  }
+
+  .color-role {
+    font-size: 11px;
+    color: var(--neutral-500);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 12px;
+  }
+
+  .color-values {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 11.5px;
+    color: var(--neutral-700);
+    font-family: 'Courier New', monospace;
+  }
+
+  .color-values span { display: flex; justify-content: space-between; }
+  .color-values .label { color: var(--neutral-500); font-size: 10px; }
+
+  /* ── TYPOGRAPHY ── */
+  .type-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+
+  @media (max-width: 700px) { .type-showcase { grid-template-columns: 1fr; } }
+
+  .type-card {
+    padding: 40px;
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    border-radius: 4px;
+  }
+
+  .type-family {
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--blue-primary);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .type-display {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--neutral-900);
+    margin-bottom: 16px;
+  }
+
+  .type-display-sans {
+    font-family: var(--sans);
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--neutral-900);
+    margin-bottom: 16px;
+  }
+
+  .type-alphabet {
+    font-size: 13px;
+    color: var(--neutral-500);
+    line-height: 2;
+    word-break: break-all;
+  }
+
+  .type-scale-table {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .type-scale-table th {
+    background: var(--neutral-100);
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--neutral-500);
+    padding: 12px 20px;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .type-scale-table td {
+    padding: 18px 20px;
+    border-top: 1px solid var(--neutral-100);
+    vertical-align: middle;
+    color: var(--neutral-700);
+    font-size: 13px;
+  }
+
+  .type-scale-table td:first-child { color: var(--neutral-900); }
+
+  /* ── VOICE & TONE ── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .voice-card {
+    padding: 28px 24px;
+    border-radius: 4px;
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .voice-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--blue-primary);
+  }
+
+  .voice-card.do-not::before { background: var(--red-primary); }
+
+  .voice-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--neutral-900);
+  }
+
+  .voice-card p {
+    font-size: 13px;
+    color: var(--neutral-700);
+    line-height: 1.7;
+  }
+
+  /* ── USAGE ── */
+  .usage-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 700px) { .usage-row { grid-template-columns: 1fr; } }
+
+  .usage-box {
+    padding: 32px;
+    border-radius: 4px;
+    border: 1px solid var(--neutral-300);
+  }
+
+  .usage-box.correct { border-top: 3px solid #22C55E; }
+  .usage-box.incorrect { border-top: 3px solid var(--red-primary); }
+
+  .usage-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .correct .usage-tag { background: #DCFCE7; color: #15803D; }
+  .incorrect .usage-tag { background: #FEE2E2; color: #B91C1C; }
+
+  /* ── DOCUMENT COMPOSITION ── */
+  .doc-comp {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 700px) { .doc-comp { grid-template-columns: 1fr; } }
+
+  .doc-example {
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .doc-header {
+    height: 80px;
+    background: var(--blue-deep);
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    gap: 12px;
+  }
+
+  .doc-body { padding: 28px; }
+
+  .doc-line {
+    height: 10px;
+    background: var(--neutral-100);
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+
+  .doc-line.short { width: 60%; }
+  .doc-line.xshort { width: 35%; }
+  .doc-line.accent { background: var(--blue-primary); width: 80px; height: 3px; margin-bottom: 16px; }
+
+  /* ── STATIONERY / MOCKUPS ── */
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .business-card {
+    aspect-ratio: 1.75;
+    background: var(--neutral-900);
+    border-radius: 6px;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .business-card::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: var(--blue-dark);
+    border-radius: 50%;
+    opacity: .2;
+  }
+
+  .bc-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .bc-title {
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--blue-primary);
+    margin-top: 4px;
+  }
+
+  .bc-contact {
+    font-size: 10px;
+    color: var(--neutral-500);
+    line-height: 1.8;
+  }
+
+  .letterhead {
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .lh-top {
+    background: var(--blue-deep);
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .lh-stripe {
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue-primary) 60%, var(--red-primary) 100%);
+  }
+
+  .lh-body { padding: 28px; }
+
+  .lh-line {
+    height: 8px;
+    background: var(--neutral-100);
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+
+  .lh-line.short { width: 55%; }
+  .lh-line.xshort { width: 30%; }
+
+  /* ── ICONOGRAPHY ── */
+  .icon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .icon-chip {
+    background: var(--white);
+    border: 1px solid var(--neutral-300);
+    border-radius: 4px;
+    width: 72px; height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-primary);
+    font-size: 26px;
+  }
+
+  /* ── NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--neutral-300);
+    padding: 0 10vw;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 52px;
+    overflow-x: auto;
+  }
+
+  .sticky-nav a {
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--neutral-500);
+    white-space: nowrap;
+    letter-spacing: .06em;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+
+  .sticky-nav a:hover { color: var(--blue-primary); border-color: var(--blue-primary); }
+
+  /* ── DIVIDER ── */
+  .rule { border: none; border-top: 1px solid var(--neutral-300); margin: 48px 0; }
+
+  /* ── FOOTER ── */
+  .brand-footer {
+    background: var(--neutral-900);
+    padding: 48px 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .brand-footer p {
+    font-size: 12px;
+    color: var(--neutral-500);
+    line-height: 1.8;
+  }
+
+  .brand-footer strong { color: var(--white); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cover-eyebrow { animation: fadeUp .6s ease both .1s; }
+  .cover h1      { animation: fadeUp .6s ease both .25s; }
+  .cover-sub     { animation: fadeUp .6s ease both .4s; }
+  .cover-meta    { animation: fadeUp .6s ease both .55s; }
+
+  @media (max-width: 600px) {
+    .section { padding: 64px 6vw; }
+    .cover { padding: 60px 6vw; }
+    .sticky-nav { padding: 0 6vw; }
+    .brand-footer { padding: 40px 6vw; }
+    .cover-meta { flex-direction: column; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-chevron">
+    <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Chevron icon replica (two chevrons) -->
+      <polygon points="10,10 60,50 110,10 95,10 60,38 25,10" fill="#1A82C4"/>
+      <polygon points="10,40 60,80 110,40 95,40 60,68 25,40" fill="#D9232E"/>
+    </svg>
+  </div>
+  <div class="cover-content">
+    <p class="cover-eyebrow">Brand Identity Guidelines</p>
+    <h1>Chevron<br/><span>CEMCS MFB</span></h1>
+    <p class="cover-sub">Microfinance Bank — Visual Standards</p>
+    <div class="cover-meta">
+      <div>Version<strong>1.0</strong></div>
+      <div>Issued<strong>2025</strong></div>
+      <div>Classification<strong>Official Use</strong></div>
+      <div>Maintained by<strong>Brand & Comms</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="#brand">Brand</a>
+  <a href="#logo">Logo</a>
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#voice">Voice</a>
+  <a href="#usage">Usage</a>
+  <a href="#collateral">Collateral</a>
+</nav>
+
+<!-- BRAND OVERVIEW -->
+<section class="section section-alt" id="brand">
+  <p class="section-label">01 — Brand Foundation</p>
+  <h2 class="section-title">Who We Are</h2>
+  <p class="section-desc">Chevron CEMCS MFB is the dedicated microfinance bank serving the Chevron Employees Multi-purpose Cooperative Society. Our identity communicates trust, institutional strength, and financial empowerment — grounded in the legacy and discipline of the Chevron brand.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h4>Mission</h4>
+      <p>To provide accessible, reliable financial services to Chevron employees and cooperative members, enabling financial wellness and economic growth.</p>
+    </div>
+    <div class="voice-card">
+      <h4>Vision</h4>
+      <p>To be the most trusted employee-focused microfinance institution in Nigeria, driven by integrity and member-first values.</p>
+    </div>
+    <div class="voice-card">
+      <h4>Values</h4>
+      <p>Trust · Transparency · Integrity · Member Focus · Financial Empowerment · Institutional Excellence</p>
+    </div>
+    <div class="voice-card">
+      <h4>Brand Personality</h4>
+      <p>Authoritative yet approachable. Corporate in discipline, cooperative in spirit. Reliable, modern, and member-centric.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO SECTION -->
+<section class="section" id="logo">
+  <p class="section-label">02 — Logo System</p>
+  <h2 class="section-title">The Mark</h2>
+  <p class="section-desc">The CEMCS MFB logo uses the Chevron corporate chevron device paired with the CEMCS MFB wordmark. It must always appear as provided — never recreated, distorted, or recoloured outside of approved variants.</p>
+
+  <div class="logo-grid">
+    <!-- On White -->
+    <div class="logo-card on-white">
+      <div class="brand-logo">
+        <svg width="80" height="56" viewBox="0 0 120 80" fill="none">
+          <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+          <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+        </svg>
+        <span class="logo-text-chevron" style="color:#1A82C4;">Chevron</span>
+        <span class="logo-text-cemcs" style="color:#D9232E;">CEMCS MFB</span>
+      </div>
+      <span class="logo-card-label">Primary — On White</span>
+    </div>
+
+    <!-- On Dark -->
+    <div class="logo-card on-dark">
+      <div class="brand-logo">
+        <svg width="80" height="56" viewBox="0 0 120 80" fill="none">
+          <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+          <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+        </svg>
+        <span class="logo-text-chevron" style="color:#1A82C4;">Chevron</span>
+        <span class="logo-text-cemcs" style="color:#fff;">CEMCS MFB</span>
+      </div>
+      <span class="logo-card-label">Reversed — On Dark</span>
+    </div>
+
+    <!-- On Blue -->
+    <div class="logo-card on-blue">
+      <div class="brand-logo">
+        <svg width="80" height="56" viewBox="0 0 120 80" fill="none">
+          <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#fff"/>
+          <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="rgba(255,255,255,.7)"/>
+        </svg>
+        <span class="logo-text-chevron" style="color:#fff;">Chevron</span>
+        <span class="logo-text-cemcs" style="color:rgba(255,255,255,.85);">CEMCS MFB</span>
+      </div>
+      <span class="logo-card-label">Mono White — On Blue</span>
+    </div>
+
+    <!-- On Red -->
+    <div class="logo-card on-red">
+      <div class="brand-logo">
+        <svg width="80" height="56" viewBox="0 0 120 80" fill="none">
+          <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#fff"/>
+          <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="rgba(255,255,255,.7)"/>
+        </svg>
+        <span class="logo-text-chevron" style="color:#fff;">Chevron</span>
+        <span class="logo-text-cemcs" style="color:rgba(255,255,255,.85);">CEMCS MFB</span>
+      </div>
+      <span class="logo-card-label">Avoid — Use Only If Necessary</span>
+    </div>
+  </div>
+
+  <!-- Clear Space -->
+  <div class="clearspace-diagram">
+    <div class="clearspace-inner">
+      <div class="brand-logo">
+        <svg width="64" height="44" viewBox="0 0 120 80" fill="none">
+          <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+          <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+        </svg>
+        <span class="logo-text-chevron" style="color:#1A82C4; font-family: 'DM Sans', sans-serif; font-weight:700; font-size:18px; letter-spacing:.04em;">Chevron</span>
+        <span class="logo-text-cemcs" style="color:#D9232E; font-family: 'DM Sans', sans-serif; font-weight:700; font-size:11px; letter-spacing:.12em;">CEMCS MFB</span>
+      </div>
+    </div>
+    <p class="clearspace-label">Minimum clear space = height of the "C" in CEMCS on all sides</p>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section class="section section-alt" id="colors">
+  <p class="section-label">03 — Colour System</p>
+  <h2 class="section-title">Brand Palette</h2>
+  <p class="section-desc">The CEMCS MFB palette is anchored by Chevron Blue and Chevron Red — institutional, high-contrast, and globally associated with the Chevron parent brand. Supporting neutrals ensure versatility across print and digital.</p>
+
+  <div class="color-grid">
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#1A82C4;"></div>
+      <div class="color-info">
+        <div class="color-name">Chevron Blue</div>
+        <div class="color-role">Primary Brand</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #1A82C4</span>
+          <span><span class="label">RGB</span> 26, 130, 196</span>
+          <span><span class="label">CMYK</span> 87, 34, 0, 23</span>
+          <span><span class="label">Pantone</span> 285 C</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#0A5EA0;"></div>
+      <div class="color-info">
+        <div class="color-name">Deep Blue</div>
+        <div class="color-role">Primary Dark</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #0A5EA0</span>
+          <span><span class="label">RGB</span> 10, 94, 160</span>
+          <span><span class="label">CMYK</span> 94, 41, 0, 37</span>
+          <span><span class="label">Pantone</span> 301 C</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#D9232E;"></div>
+      <div class="color-info">
+        <div class="color-name">Chevron Red</div>
+        <div class="color-role">Secondary Brand</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #D9232E</span>
+          <span><span class="label">RGB</span> 217, 35, 46</span>
+          <span><span class="label">CMYK</span> 0, 84, 79, 15</span>
+          <span><span class="label">Pantone</span> 485 C</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#B01820;"></div>
+      <div class="color-info">
+        <div class="color-name">Deep Red</div>
+        <div class="color-role">Secondary Dark</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #B01820</span>
+          <span><span class="label">RGB</span> 176, 24, 32</span>
+          <span><span class="label">CMYK</span> 0, 86, 82, 31</span>
+          <span><span class="label">Pantone</span> 187 C</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#0F1C2D;"></div>
+      <div class="color-info">
+        <div class="color-name">Midnight</div>
+        <div class="color-role">Body / Backgrounds</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #0F1C2D</span>
+          <span><span class="label">RGB</span> 15, 28, 45</span>
+          <span><span class="label">CMYK</span> 67, 38, 0, 82</span>
+          <span><span class="label">Pantone</span> 296 C</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#F5F7FA;"></div>
+      <div class="color-info">
+        <div class="color-name">Off White</div>
+        <div class="color-role">Background / Surface</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #F5F7FA</span>
+          <span><span class="label">RGB</span> 245, 247, 250</span>
+          <span><span class="label">CMYK</span> 2, 1, 0, 2</span>
+          <span><span class="label">Usage</span> Light surfaces</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#8494A8;"></div>
+      <div class="color-info">
+        <div class="color-name">Steel</div>
+        <div class="color-role">Supporting / Muted</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #8494A8</span>
+          <span><span class="label">RGB</span> 132, 148, 168</span>
+          <span><span class="label">CMYK</span> 21, 12, 0, 34</span>
+          <span><span class="label">Usage</span> Captions, meta</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-chip">
+      <div class="color-swatch" style="background:#FFFFFF; border-bottom: 1px solid #eee;"></div>
+      <div class="color-info">
+        <div class="color-name">White</div>
+        <div class="color-role">Canvas</div>
+        <div class="color-values">
+          <span><span class="label">HEX</span> #FFFFFF</span>
+          <span><span class="label">RGB</span> 255, 255, 255</span>
+          <span><span class="label">CMYK</span> 0, 0, 0, 0</span>
+          <span><span class="label">Usage</span> Documents, cards</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="section" id="typography">
+  <p class="section-label">04 — Typography</p>
+  <h2 class="section-title">Type System</h2>
+  <p class="section-desc">CEMCS MFB uses a two-family system: Cormorant Garamond for prestige display headlines and DM Sans for all functional text. This pairing communicates institutional authority while maintaining legibility across digital and print contexts.</p>
+
+  <div class="type-showcase">
+    <div class="type-card">
+      <div class="type-family">Cormorant Garamond — Display</div>
+      <div class="type-display">Aa Bb Cc</div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--neutral-700); line-height:1.6; margin-bottom:16px;">
+        Your financial future,<br/>built on trust.
+      </p>
+      <div class="type-alphabet" style="font-family:'Cormorant Garamond',serif;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>
+        abcdefghijklmnopqrstuvwxyz<br/>
+        0123456789 &amp; . , : ; ! ? @ # ₦
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-family">DM Sans — Interface &amp; Body</div>
+      <div class="type-display-sans">Aa Bb Cc</div>
+      <p style="font-family:'DM Sans',sans-serif; font-size:15px; color:var(--neutral-700); line-height:1.7; margin-bottom:16px;">
+        Loans, savings, and cooperative banking — built for Chevron employees.
+      </p>
+      <div class="type-alphabet" style="font-family:'DM Sans',sans-serif;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>
+        abcdefghijklmnopqrstuvwxyz<br/>
+        0123456789 &amp; . , : ; ! ? @ # ₦
+      </div>
+    </div>
+  </div>
+
+  <table class="type-scale-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Font</th>
+        <th>Size</th>
+        <th>Weight</th>
+        <th>Line Height</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Hero / Campaign Headline</td>
+        <td>Cormorant Garamond</td>
+        <td>72–96px</td>
+        <td>300 Light</td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>Section Title (H1)</td>
+        <td>Cormorant Garamond</td>
+        <td>48–64px</td>
+        <td>400 Regular</td>
+        <td>1.1</td>
+      </tr>
+      <tr>
+        <td>Page Heading (H2)</td>
+        <td>Cormorant Garamond</td>
+        <td>32–40px</td>
+        <td>600 SemiBold</td>
+        <td>1.2</td>
+      </tr>
+      <tr>
+        <td>Sub-heading (H3)</td>
+        <td>DM Sans</td>
+        <td>20–24px</td>
+        <td>500 Medium</td>
+        <td>1.3</td>
+      </tr>
+      <tr>
+        <td>Body Text</td>
+        <td>DM Sans</td>
+        <td>15–16px</td>
+        <td>400 Regular</td>
+        <td>1.7</td>
+      </tr>
+      <tr>
+        <td>Labels / UI</td>
+        <td>DM Sans</td>
+        <td>12–13px</td>
+        <td>500–600</td>
+        <td>1.4</td>
+      </tr>
+      <tr>
+        <td>Captions / Meta</td>
+        <td>DM Sans</td>
+        <td>11px</td>
+        <td>400</td>
+        <td>1.6</td>
+      </tr>
+      <tr>
+        <td>Legal / Disclaimer</td>
+        <td>DM Sans</td>
+        <td>10px</td>
+        <td>300 Light</td>
+        <td>1.6</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- VOICE & TONE -->
+<section class="section section-alt" id="voice">
+  <p class="section-label">05 — Voice &amp; Tone</p>
+  <h2 class="section-title">How We Communicate</h2>
+  <p class="section-desc">CEMCS MFB speaks with the confidence of an institution and the warmth of a cooperative. Every communication should reinforce trust, clarity, and member value.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h4>✓ Trustworthy</h4>
+      <p>Speak with authority and precision. Avoid vague language. Members should feel secure in every interaction.</p>
+    </div>
+    <div class="voice-card">
+      <h4>✓ Clear &amp; Direct</h4>
+      <p>No financial jargon without explanation. Plain language, clear terms, no ambiguity about fees or conditions.</p>
+    </div>
+    <div class="voice-card">
+      <h4>✓ Professional</h4>
+      <p>Corporate-grade tone. Represent the Chevron parent brand's discipline in every external communication.</p>
+    </div>
+    <div class="voice-card">
+      <h4>✓ Member-Centric</h4>
+      <p>Address members as partners. Use "you" and "your." Make members feel ownership, not just clienthood.</p>
+    </div>
+    <div class="voice-card do-not">
+      <h4>✗ Not Overly Formal</h4>
+      <p>Avoid cold, bureaucratic tone. This is a cooperative — members are known individuals, not account numbers.</p>
+    </div>
+    <div class="voice-card do-not">
+      <h4>✗ Not Casual / Slang</h4>
+      <p>Maintain institutional gravity. No pidgin, slang, or overly casual expressions in official communications.</p>
+    </div>
+  </div>
+
+  <hr class="rule"/>
+
+  <h3 style="font-family: var(--serif); font-size: 24px; font-weight:400; margin-bottom: 20px;">Tone Examples</h3>
+  <div class="usage-row">
+    <div class="usage-box correct">
+      <span class="usage-tag">✓ Do This</span>
+      <p style="font-size:14px; color:var(--neutral-700); line-height:1.8;">
+        <strong style="color:var(--neutral-900);">Loan Approval Notice:</strong><br/>
+        "Congratulations — your loan request of ₦500,000 has been approved. Funds will be disbursed to your registered account within 24 hours. Please contact us for any queries."
+      </p>
+    </div>
+    <div class="usage-box incorrect">
+      <span class="usage-tag">✗ Avoid This</span>
+      <p style="font-size:14px; color:var(--neutral-700); line-height:1.8;">
+        <strong style="color:var(--neutral-900);">Loan Approval Notice:</strong><br/>
+        "Yay! Your loan don approve o! 500k don land. Check your account anytime soon. Reach us if anything."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO USAGE RULES -->
+<section class="section" id="usage">
+  <p class="section-label">06 — Logo Usage Rules</p>
+  <h2 class="section-title">Do's &amp; Don'ts</h2>
+  <p class="section-desc">These rules protect the integrity of the CEMCS MFB mark and its association with the Chevron corporate identity.</p>
+
+  <div class="usage-row">
+    <div class="usage-box correct">
+      <span class="usage-tag">✓ Correct Usage</span>
+      <ul style="font-size:13px; color:var(--neutral-700); line-height:2; padding-left:20px;">
+        <li>Use approved logo files only</li>
+        <li>Maintain clear space on all sides</li>
+        <li>Use on approved background colours</li>
+        <li>Scale proportionally — never distort</li>
+        <li>Use the full lockup (chevron + wordmark)</li>
+        <li>Minimum digital size: 120px wide</li>
+        <li>Minimum print size: 25mm wide</li>
+      </ul>
+    </div>
+    <div class="usage-box incorrect">
+      <span class="usage-tag">✗ Never Do This</span>
+      <ul style="font-size:13px; color:var(--neutral-700); line-height:2; padding-left:20px;">
+        <li>Do not stretch or compress the logo</li>
+        <li>Do not recolour or apply effects</li>
+        <li>Do not place on busy photo backgrounds</li>
+        <li>Do not add shadows, outlines, or glows</li>
+        <li>Do not use only the chevron without "CEMCS MFB"</li>
+        <li>Do not place on low-contrast backgrounds</li>
+        <li>Do not recreate the logo in any software</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COLLATERAL -->
+<section class="section section-alt" id="collateral">
+  <p class="section-label">07 — Collateral &amp; Stationery</p>
+  <h2 class="section-title">Brand in Use</h2>
+  <p class="section-desc">These mockups illustrate how the CEMCS MFB brand should appear across official documents and printed materials.</p>
+
+  <div class="mockup-grid">
+
+    <!-- Business Card -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:var(--neutral-500); margin-bottom:12px;">Business Card</p>
+      <div class="business-card">
+        <div>
+          <div class="bc-name">Adeyemi Olatunde</div>
+          <div class="bc-title">Branch Manager</div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <svg width="28" height="20" viewBox="0 0 120 80" fill="none">
+              <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+              <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+            </svg>
+            <span style="font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.08em; font-family:'DM Sans',sans-serif;">CEMCS MFB</span>
+          </div>
+          <div class="bc-contact">
+            +234 (0) 800 CEMCS MFB<br/>
+            info@cemcsmfb.com<br/>
+            www.cemcsmfb.com
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Letterhead -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:var(--neutral-500); margin-bottom:12px;">Official Letterhead</p>
+      <div class="letterhead">
+        <div class="lh-top">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <svg width="36" height="26" viewBox="0 0 120 80" fill="none">
+              <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+              <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+            </svg>
+            <div>
+              <div style="font-family:'DM Sans',sans-serif; font-weight:700; color:#fff; font-size:13px; letter-spacing:.04em;">Chevron</div>
+              <div style="font-family:'DM Sans',sans-serif; font-weight:700; color:#D9232E; font-size:9px; letter-spacing:.14em;">CEMCS MFB</div>
+            </div>
+          </div>
+          <div style="text-align:right; font-size:9px; color:rgba(255,255,255,.45); line-height:1.8; font-family:'DM Sans',sans-serif;">
+            www.cemcsmfb.com<br/>
+            +234 (0) 800 CEMCS
+          </div>
+        </div>
+        <div class="lh-stripe"></div>
+        <div class="lh-body">
+          <div class="lh-line xshort" style="margin-bottom:16px;"></div>
+          <div class="lh-line"></div>
+          <div class="lh-line"></div>
+          <div class="lh-line short"></div>
+          <div style="height:16px;"></div>
+          <div class="lh-line"></div>
+          <div class="lh-line"></div>
+          <div class="lh-line xshort"></div>
+          <div style="height:16px;"></div>
+          <div class="lh-line" style="width:40%; background:var(--neutral-300);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Signature -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:var(--neutral-500); margin-bottom:12px;">Email Signature</p>
+      <div style="background:var(--white); border:1px solid var(--neutral-300); border-radius:4px; padding:24px 28px;">
+        <div style="display:flex; gap:16px; align-items:center; padding-bottom:16px; border-bottom:2px solid var(--neutral-100);">
+          <svg width="36" height="26" viewBox="0 0 120 80" fill="none">
+            <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+            <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+          </svg>
+          <div style="border-left:2px solid var(--neutral-300); padding-left:16px;">
+            <div style="font-family:'DM Sans',sans-serif; font-weight:600; font-size:13px; color:var(--neutral-900);">Adeyemi Olatunde</div>
+            <div style="font-size:11px; color:var(--blue-primary); letter-spacing:.06em; text-transform:uppercase; font-weight:500; margin-top:2px;">Branch Manager</div>
+          </div>
+        </div>
+        <div style="margin-top:12px; font-size:11px; color:var(--neutral-500); line-height:1.9; font-family:'DM Sans',sans-serif;">
+          <strong style="color:var(--neutral-700);">Chevron CEMCS Microfinance Bank</strong><br/>
+          📞 +234 (0) 800 CEMCS MFB<br/>
+          ✉️ a.olatunde@cemcsmfb.com<br/>
+          🌐 www.cemcsmfb.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Document Cover -->
+    <div>
+      <p style="font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:var(--neutral-500); margin-bottom:12px;">Document / Report Cover</p>
+      <div style="background:var(--neutral-900); border-radius:4px; overflow:hidden; aspect-ratio:.77;">
+        <div style="height:4px; background:linear-gradient(90deg, var(--blue-primary), var(--red-primary));"></div>
+        <div style="padding:32px 28px; height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <svg width="32" height="22" viewBox="0 0 120 80" fill="none">
+              <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+              <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+            </svg>
+            <span style="font-family:'DM Sans',sans-serif; font-weight:700; color:rgba(255,255,255,.6); font-size:10px; letter-spacing:.1em;">CEMCS MFB</span>
+          </div>
+          <div>
+            <div style="font-size:10px; color:var(--blue-primary); letter-spacing:.2em; text-transform:uppercase; margin-bottom:12px; font-family:'DM Sans',sans-serif;">Annual Report</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:#fff; line-height:1.2; margin-bottom:8px;">Financial<br/>Performance<br/>Review 2024</div>
+            <div style="height:2px; width:48px; background:var(--red-primary); margin:16px 0;"></div>
+            <div style="font-size:10px; color:var(--neutral-500); font-family:'DM Sans',sans-serif;">Confidential — Internal Use</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="brand-footer">
+  <div>
+    <p><strong>Chevron CEMCS Microfinance Bank</strong></p>
+    <p>Brand Identity Guidelines — Version 1.0<br/>
+    All elements subject to Chevron corporate brand compliance.</p>
+  </div>
+  <div style="text-align:right;">
+    <svg width="40" height="28" viewBox="0 0 120 80" fill="none">
+      <polygon points="10,8 60,48 110,8 95,8 60,36 25,8" fill="#1A82C4"/>
+      <polygon points="10,38 60,78 110,38 95,38 60,66 25,38" fill="#D9232E"/>
+    </svg>
+    <p style="margin-top:8px;">© 2025 Chevron CEMCS MFB</p>
+  </div>
+</footer>
+
+</body>
+</html>

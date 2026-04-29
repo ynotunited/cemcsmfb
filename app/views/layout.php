@@ -1,0 +1,394 @@
+<?php // app/views/layout.php ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= htmlspecialchars($title ?? 'Chevron CEMCS MFB — Financial Services for Chevron Employees') ?></title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="<?= APP_URL ?>/assets/images/cemcs-logo-favicon.png">
+  <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/globals.css">
+  <?php if (!empty($recaptcha_site_key) && $recaptcha_site_key !== 'YOUR_RECAPTCHA_SITE_KEY'): ?>
+  <script src="https://www.google.com/recaptcha/api.js?render=<?= htmlspecialchars($recaptcha_site_key) ?>"></script>
+  <?php endif; ?>
+  <style>
+    /* ── PAGE BODY OFFSET ────────────────────────────── */
+    .app-main { padding-top: 0; }
+
+    /* ── SMART CHATBOT WIDGET ────────────────────────── */
+    .chatbot-fab {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1200;
+      border: none;
+      border-radius: 999px;
+      background: var(--brand-blue);
+      color: #fff;
+      padding: 12px 16px;
+      font-weight: 600;
+      box-shadow: var(--s-2);
+      cursor: pointer;
+    }
+    .chatbot-panel {
+      position: fixed;
+      right: 20px;
+      bottom: 78px;
+      width: min(360px, calc(100vw - 24px));
+      max-height: min(560px, calc(100vh - 120px));
+      z-index: 1200;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--s-3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chatbot-panel.open { display: flex; }
+    .chatbot-head {
+      background: var(--blue-deep);
+      color: #fff;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chatbot-close {
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .chatbot-log {
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: #f8fafc;
+      min-height: 250px;
+    }
+    .chat-bubble {
+      max-width: 88%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+    .chat-bot { background: #eaf2ff; color: #102441; align-self: flex-start; }
+    .chat-user { background: #1A6EE0; color: #fff; align-self: flex-end; }
+    .chatbot-meta {
+      font-size: 12px;
+      margin-top: 6px;
+    }
+    .chatbot-meta a { color: #1A6EE0; text-decoration: underline; }
+    .chatbot-form {
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+    .chatbot-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .chatbot-send {
+      border: none;
+      border-radius: 8px;
+      background: var(--brand-blue);
+      color: #fff;
+      padding: 0 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<?php 
+  // Simple active state detection
+  $current_uri = $_GET['url'] ?? ''; 
+  $current_uri = trim($current_uri, '/');
+?>
+
+<!-- NAV -->
+<header class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="<?= APP_URL ?>/" class="nav-logo">
+      <img src="<?= APP_URL ?>/assets/images/cemcs-logo-colored-255x68.png" alt="Chevron CEMCS MFB" style="height: 44px; width: auto;">
+    </a>
+    <ul class="nav-links">
+      <li class="has-submenu">
+        <a href="<?= APP_URL ?>/about" class="<?= in_array($current_uri, ['about', 'directors', 'management', 'quality-policy', 'careers', 'help', 'contact', 'blog']) ? 'active' : '' ?>">Company</a>
+        <ul class="submenu">
+          <li><a href="<?= APP_URL ?>/about">About CEMCS MFB</a></li>
+          <li><a href="<?= APP_URL ?>/directors">Our Directors</a></li>
+          <li><a href="<?= APP_URL ?>/management">Management Team</a></li>
+          <li><a href="<?= APP_URL ?>/quality-policy">Quality Policy</a></li>
+          <li><a href="<?= APP_URL ?>/careers">Careers</a></li>
+          <li><a href="<?= APP_URL ?>/help">FAQs</a></li>
+          <li><a href="<?= APP_URL ?>/contact">Contact</a></li>
+          <li><a href="<?= APP_URL ?>/blog">Blog</a></li>
+        </ul>
+      </li>
+
+      <li class="has-submenu">
+        <a href="<?= APP_URL ?>/personal" class="<?= in_array($current_uri, ['personal', 'current-account', 'savings-account', 'joint-savings', 'cashplan-savings', 'fixed-deposit', 'smart-salary']) ? 'active' : '' ?>">Accounts</a>
+        <ul class="submenu">
+          <li><a href="<?= APP_URL ?>/current-account">Current Account</a></li>
+          <li><a href="<?= APP_URL ?>/savings-account">Savings Account</a></li>
+          <li><a href="<?= APP_URL ?>/joint-savings">Joint Savings Account</a></li>
+          <li><a href="<?= APP_URL ?>/cashplan-savings">Cash Plan Savings Account</a></li>
+          <li><a href="<?= APP_URL ?>/fixed-deposit">Fixed Deposit Account</a></li>
+          <li><a href="<?= APP_URL ?>/smart-salary">Smart Salary Account</a></li>
+        </ul>
+      </li>
+
+      <li class="has-submenu">
+        <a href="<?= APP_URL ?>/loans" class="<?= in_array($current_uri, ['loans', 'loan-no-story', 'loan-home-improvement', 'loan-housing', 'loan-education', 'loan-target', 'loan-spy-police', 'loan-short-term']) ? 'active' : '' ?>">Loan Products</a>
+        <ul class="submenu">
+          <li><a href="<?= APP_URL ?>/loan-no-story">10-14-24 No Story Loan</a></li>
+          <li><a href="<?= APP_URL ?>/loan-home-improvement">Home Improvement Loan</a></li>
+          <li><a href="<?= APP_URL ?>/loan-housing">Micro Housing Loan</a></li>
+          <li><a href="<?= APP_URL ?>/loan-education">Education Support Loan</a></li>
+          <li><a href="<?= APP_URL ?>/loan-target">Target Loans &amp; Advances</a></li>
+          <li><a href="<?= APP_URL ?>/loan-spy-police">Spy Police Special Loan</a></li>
+          <li><a href="<?= APP_URL ?>/loan-short-term">Short Term/Overdraft</a></li>
+        </ul>
+      </li>
+
+      <li class="has-submenu">
+        <a href="<?= APP_URL ?>/open-account" class="<?= in_array($current_uri, ['open-account', 'debit-cards', 'mobile-banking', 'instant-payment', 'payments-deposits']) ? 'active' : '' ?>">E-Banking</a>
+        <ul class="submenu">
+          <li><a href="https://cemcsmfb.qoreonline.com/dashboard/home" target="_blank" rel="noopener">Open An Account</a></li>
+          <li><a href="<?= APP_URL ?>/debit-cards">Debit Cards</a></li>
+          <li><a href="<?= APP_URL ?>/mobile-banking">Mobile Banking</a></li>
+          <li><a href="<?= APP_URL ?>/instant-payment">Instant Payment</a></li>
+          <li><a href="<?= APP_URL ?>/payments-deposits">Payments &amp; Deposits</a></li>
+        </ul>
+      </li>
+
+      <li><a href="<?= APP_URL ?>/forms" class="<?= $current_uri == 'forms' ? 'active' : '' ?>">Forms</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://cemcsmfb.qoreonline.com/dashboard/home" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Internet Banking</a>
+    </div>
+  </div>
+</header>
+
+<main class="app-main">
+  <?= $content ?? '' ?>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="<?= APP_URL ?>/" class="nav-logo">
+          <img src="<?= APP_URL ?>/assets/images/cemcs-logo-sticky-mobile.png" alt="CEMCS MFB" style="height:38px;width:auto;">
+        </a>
+        <p>Chevron Employees Multi-purpose Cooperative Society Microfinance Bank. CBN Licensed. RC 856802.</p>
+        <p style="margin-top:var(--s4);">
+          <a href="https://play.google.com/store/apps/details?id=com.cemcsmfb.cemcsmfbmobile" target="_blank" rel="noopener" style="display:inline-block;">
+            <img src="<?= APP_URL ?>/assets/images/google-play.png" alt="Get it on Google Play" style="height:36px;width:auto;">
+          </a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Deposit Products</h5>
+        <a href="<?= APP_URL ?>/current-account">Current Account</a>
+        <a href="<?= APP_URL ?>/savings-account">Savings Account</a>
+        <a href="<?= APP_URL ?>/joint-savings">Joint Savings Account</a>
+        <a href="<?= APP_URL ?>/cashplan-savings">Cash Plan Savings</a>
+        <a href="<?= APP_URL ?>/fixed-deposit">Fixed Deposit</a>
+        <a href="<?= APP_URL ?>/smart-salary">Smart Salary Account</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Loan Products</h5>
+        <a href="<?= APP_URL ?>/loan-no-story">10-14-24 No Story Loan</a>
+        <a href="<?= APP_URL ?>/loan-home-improvement">Home Improvement Loan</a>
+        <a href="<?= APP_URL ?>/loan-housing">Micro Housing Loan</a>
+        <a href="<?= APP_URL ?>/loan-education">Education Support Loan</a>
+        <a href="<?= APP_URL ?>/loan-target">Target Loans &amp; Advances</a>
+        <a href="<?= APP_URL ?>/loan-spy-police">Spy Police Special Loan</a>
+        <a href="<?= APP_URL ?>/loan-short-term">Short Term / Overdraft</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>E-Banking</h5>
+        <a href="https://cemcsmfb.qoreonline.com/dashboard/home" target="_blank" rel="noopener">Open an Account</a>
+        <a href="<?= APP_URL ?>/debit-cards">Debit Cards</a>
+        <a href="<?= APP_URL ?>/mobile-banking">Mobile Banking</a>
+        <a href="<?= APP_URL ?>/instant-payment">Instant Payment</a>
+        <a href="<?= APP_URL ?>/payments-deposits">Payments &amp; Deposits</a>
+        <a href="<?= APP_URL ?>/forms">Download Forms</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="<?= APP_URL ?>/about">About CEMCS MFB</a>
+        <a href="<?= APP_URL ?>/directors">Our Directors</a>
+        <a href="<?= APP_URL ?>/management">Management Team</a>
+        <a href="<?= APP_URL ?>/quality-policy">Quality Policy</a>
+        <a href="<?= APP_URL ?>/careers">Careers</a>
+        <a href="<?= APP_URL ?>/blog">Blog</a>
+        <a href="<?= APP_URL ?>/help">FAQs</a>
+        <a href="<?= APP_URL ?>/branches">Branch Locator</a>
+        <a href="<?= APP_URL ?>/contact">Contact Us</a>
+      </div>
+
+    </div>
+    <div class="footer-base">
+      <p>&copy; <?= date('Y') ?> Chevron CEMCS Microfinance Bank (RC 856802). All rights reserved. Deposits insured by NDIC.</p>
+      <p>6, Udeco Medical Road, Chevyview Estate, Off Chevron Drive, Lekki, Lagos.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav elevation on scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('elevated', window.scrollY > 10);
+  }, { passive: true });
+
+  // Scroll reveal
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+
+<button class="chatbot-fab" id="chatbot-fab" type="button">Chat With Us</button>
+<div class="chatbot-panel" id="chatbot-panel" aria-live="polite">
+  <div class="chatbot-head">
+    <strong>Smart Assistant</strong>
+    <button class="chatbot-close" id="chatbot-close" type="button" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="chatbot-log" id="chatbot-log"></div>
+  <form class="chatbot-form" id="chatbot-form">
+    <input class="chatbot-input" id="chatbot-input" name="message" type="text" placeholder="Ask about accounts, loans, forms..." maxlength="500" required>
+    <button class="chatbot-send" id="chatbot-send" type="submit">Send</button>
+  </form>
+</div>
+
+<script>
+  (function () {
+    const panel = document.getElementById('chatbot-panel');
+    const fab = document.getElementById('chatbot-fab');
+    const closeBtn = document.getElementById('chatbot-close');
+    const log = document.getElementById('chatbot-log');
+    const form = document.getElementById('chatbot-form');
+    const input = document.getElementById('chatbot-input');
+    const sendBtn = document.getElementById('chatbot-send');
+
+    if (!panel || !fab || !log || !form || !input || !sendBtn) {
+      return;
+    }
+
+    function addBubble(text, role, options = {}) {
+      const item = document.createElement('div');
+      item.className = 'chat-bubble ' + (role === 'user' ? 'chat-user' : 'chat-bot');
+      item.textContent = text;
+
+      if (options.sourceUrl || options.whatsappLink || options.prefillUrl) {
+        const meta = document.createElement('div');
+        meta.className = 'chatbot-meta';
+        if (options.sourceUrl) {
+          const src = document.createElement('a');
+          src.href = options.sourceUrl;
+          src.textContent = options.sourceTitle ? ('Source: ' + options.sourceTitle) : 'View related page';
+          meta.appendChild(src);
+        }
+        if (options.whatsappLink) {
+          if (meta.childNodes.length > 0) meta.appendChild(document.createTextNode(' · '));
+          const wa = document.createElement('a');
+          wa.href = options.whatsappLink;
+          wa.target = '_blank';
+          wa.rel = 'noopener';
+          wa.textContent = 'Continue on WhatsApp';
+          meta.appendChild(wa);
+        }
+        if (options.prefillUrl) {
+          if (meta.childNodes.length > 0) meta.appendChild(document.createTextNode(' · '));
+          const pf = document.createElement('a');
+          pf.href = options.prefillUrl;
+          pf.textContent = 'Start here';
+          meta.appendChild(pf);
+        }
+        item.appendChild(meta);
+      }
+
+      log.appendChild(item);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function setOpen(open) {
+      panel.classList.toggle('open', open);
+      if (open) input.focus();
+    }
+
+    fab.addEventListener('click', function () {
+      const willOpen = !panel.classList.contains('open');
+      setOpen(willOpen);
+      if (willOpen && log.childNodes.length === 0) {
+        addBubble('Hi. Ask me anything about CEMCS MFB services. If I am not confident, I will move you to WhatsApp support.');
+      }
+    });
+
+    closeBtn.addEventListener('click', function () {
+      setOpen(false);
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const message = input.value.trim();
+      if (!message) return;
+
+      addBubble(message, 'user');
+      input.value = '';
+      sendBtn.disabled = true;
+
+      fetch('<?= APP_URL ?>/api/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message })
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data || data.success !== true) {
+          addBubble('Sorry, I could not process that just now.');
+          return;
+        }
+        addBubble(data.message || 'I found some information for you.', 'bot', {
+          sourceUrl: data.source_url || '',
+          sourceTitle: data.source_title || '',
+          whatsappLink: data.handoff ? (data.whatsapp_link || '') : '',
+          prefillUrl: data.prefill_url || ''
+        });
+      })
+      .catch(function () {
+        addBubble('Network issue detected. Please try again.');
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+    });
+  })();
+</script>
+</body>
+</html>

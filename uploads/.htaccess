@@ -1,0 +1,19 @@
+# Disable PHP execution in the uploads folder to prevent malicious scripts
+<FilesMatch "\.(php|php4|php5|php7|php8|phtml|pl|py|jsp|asp|sh|cgi)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Only allow certain MIME types
+<FilesMatch "\.(pdf|jpg|jpeg|png)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Disable script execution engine entirely
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php5.c>
+    php_flag engine off
+</IfModule>
