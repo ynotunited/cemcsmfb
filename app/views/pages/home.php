@@ -1,85 +1,467 @@
 
 <!-- ═══════════════════════════════════════
-   HERO
+   HERO SLIDER
 ═══════════════════════════════════════ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-indicator"></span>
-          <span class="label">CBN Licensed · NDIC Insured · Tier 1 MFB</span>
-        </div>
-        <h1 class="hero-title">Banking built for<br/><span class="blue">every</span> Nigerian.</h1>
-        <p class="hero-desc">From Chevron employees to small businesses and the wider community — CEMCS MFB delivers loans, savings, and digital banking that works for you.</p>
-        <div class="hero-actions">
-          <a href="https://cemcsmfb.qoreonline.com/dashboard/home" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><span class="btn-label">Open a Free Account</span></a>
-          <a href="<?= APP_URL ?>/loans" class="btn btn-ghost btn-lg"><span class="btn-label">Apply for a Loan</span></a>
-        </div>
-        <div class="hero-metrics">
-          <div class="metric">
-            <div class="metric-val">₦4.2B</div>
-            <div class="metric-label">Total Disbursed</div>
+<?php
+$hero_slides = [
+  [
+    // Cheerful African American woman at ATM with credit card — account / banking
+    'image'    => 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1600&q=80&auto=format&fit=crop',
+    'badge'    => 'CBN Licensed · NDIC Insured · Tier 1 MFB',
+    'title'    => 'Banking built for<br/><span class="hs-blue">every</span> Nigerian.',
+    'desc'     => 'From Chevron employees to small businesses and the wider community — CEMCS MFB delivers loans, savings, and digital banking that works for you.',
+    'cta_primary_label' => 'Open a Free Account',
+    'cta_primary_href'  => 'https://cemcsmfb.qoreonline.com/dashboard/home',
+    'cta_primary_ext'   => true,
+    'cta_ghost_label'   => 'Apply for a Loan',
+    'cta_ghost_href'    => APP_URL . '/loans',
+  ],
+  [
+    // Black woman holding credit card and smartphone — savings / digital payments
+    'image'    => 'https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=1600&q=80&auto=format&fit=crop',
+    'badge'    => 'Up to 18% p.a. · Zero Fees on Member Transfers',
+    'title'    => 'Save smarter.<br/><span class="hs-blue">Earn</span> more.',
+    'desc'     => 'Six account types designed to match every savings goal — from everyday transactions to long-term fixed deposits earning up to 18% p.a.',
+    'cta_primary_label' => 'Explore Accounts',
+    'cta_primary_href'  => APP_URL . '/personal',
+    'cta_primary_ext'   => false,
+    'cta_ghost_label'   => 'Open Fixed Deposit',
+    'cta_ghost_href'    => APP_URL . '/fixed-deposit',
+  ],
+  [
+    // Black man smiling in suit — professional / loan (photo by Oladimeji Odunsi)
+    'image'    => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80&auto=format&fit=crop&fp-x=0.5&fp-y=0.35',
+    'badge'    => '24-Hour Approval · Salary-Backed Loans Up to ₦10M',
+    'title'    => 'The right loan<br/>for <span class="hs-blue">every</span> need.',
+    'desc'     => 'Seven specialised loan products for CNL employees, contract staff, Spy Police, and businesses — with disbursement in as little as 24 hours.',
+    'cta_primary_label' => 'Apply for a Loan',
+    'cta_primary_href'  => APP_URL . '/loans',
+    'cta_primary_ext'   => false,
+    'cta_ghost_label'   => 'View All Loans',
+    'cta_ghost_href'    => APP_URL . '/loans',
+  ],
+  [
+    // Black man looking at smartphone — mobile banking
+    'image'    => 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1600&q=80&auto=format&fit=crop',
+    'badge'    => 'Free Mobile App · NIBSS Instant Payments',
+    'title'    => 'Bank from anywhere,<br/><span class="hs-blue">any time.</span>',
+    'desc'     => 'Free mobile banking, NIBSS instant payments, Verve debit cards, and convenient cash deposit channels — all in one seamless experience.',
+    'cta_primary_label' => 'Get the App',
+    'cta_primary_href'  => 'https://play.google.com/store/apps/details?id=com.cemcsmfb.cemcsmfbmobile',
+    'cta_primary_ext'   => true,
+    'cta_ghost_label'   => 'Learn More',
+    'cta_ghost_href'    => APP_URL . '/mobile-banking',
+  ],
+];
+?>
+
+<section class="hero-slider" id="heroSlider" aria-label="Hero slideshow">
+
+  <!-- Slides -->
+  <div class="hs-track" id="hsTrack">
+    <?php foreach ($hero_slides as $i => $slide): ?>
+    <div class="hs-slide<?= $i === 0 ? ' is-active' : '' ?>" data-index="<?= $i ?>" aria-hidden="<?= $i === 0 ? 'false' : 'true' ?>">
+      <!-- Background image -->
+      <div class="hs-bg" style="background-image:url('<?= htmlspecialchars($slide['image']) ?>')"></div>
+      <div class="hs-overlay"></div>
+
+      <!-- Content -->
+      <div class="wrap hs-inner">
+        <div class="hs-content">
+          <div class="hs-badge">
+            <span class="hs-badge-dot"></span>
+            <span><?= htmlspecialchars($slide['badge']) ?></span>
           </div>
-          <div class="metric-rule"></div>
-          <div class="metric">
-            <div class="metric-val">18K</div>
-            <div class="metric-label">Active Members</div>
-          </div>
-          <div class="metric-rule"></div>
-          <div class="metric">
-            <div class="metric-val">18%</div>
-            <div class="metric-label">Max Savings Rate</div>
-          </div>
-          <div class="metric-rule"></div>
-          <div class="metric">
-            <div class="metric-val">24h</div>
-            <div class="metric-label">Loan Disbursement</div>
-          </div>
-        </div>
-        <div style="margin-top:var(--s6);">
-          <p style="font-size:var(--t-xs);color:var(--txt-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--s3);">Experience freedom on the go</p>
-          <a href="https://play.google.com/store/apps/details?id=com.cemcsmfb.cemcsmfbmobile" target="_blank" rel="noopener">
-            <img src="<?= APP_URL ?>/assets/images/google-play.png" alt="Get it on Google Play" style="height:44px;width:auto;">
-          </a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="debit-card">
-          <div class="dc-top">
-            <div class="dc-chip"></div>
-            <div class="dc-scheme"><div class="dc-scheme-circle"></div><div class="dc-scheme-circle"></div></div>
-          </div>
-          <div class="dc-number">5413 &nbsp;•••• &nbsp;•••• &nbsp;7829</div>
-          <div class="dc-footer">
-            <div><div class="dc-field-label">Cardholder</div><div class="dc-field-val">A. Olatunde</div></div>
-            <div><div class="dc-field-label">Expires</div><div class="dc-field-val">09 / 28</div></div>
-            <div><div class="dc-field-label">Type</div><div class="dc-field-val">Debit</div></div>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="info-tile"><div class="info-tile-label">Balance</div><div class="info-tile-val">₦2.48M</div></div>
-          <div class="info-tile"><div class="info-tile-label">Month-to-date</div><div class="info-tile-val up">+₦120K</div></div>
-        </div>
-        <div class="tx-panel">
-          <div class="tx-panel-header"><span class="tx-panel-title">Recent Transactions</span><a href="#" class="tx-link">View all</a></div>
-          <div class="tx-row">
-            <div class="tx-row-left"><div class="tx-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><div class="tx-name">Salary Credit</div><div class="tx-meta">28 Dec · Chevron Nigeria</div></div></div>
-            <div class="tx-amt cr">+₦850,000</div>
-          </div>
-          <div class="tx-row">
-            <div class="tx-row-left"><div class="tx-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><div class="tx-name">Loan Repayment</div><div class="tx-meta">27 Dec · Auto-debit</div></div></div>
-            <div class="tx-amt dr">-₦45,000</div>
-          </div>
-          <div class="tx-row">
-            <div class="tx-row-left"><div class="tx-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div><div class="tx-name">Dividend Payout</div><div class="tx-meta">26 Dec · Cooperative</div></div></div>
-            <div class="tx-amt cr">+₦22,500</div>
+          <h1 class="hs-title"><?= $slide['title'] ?></h1>
+          <p class="hs-desc"><?= htmlspecialchars($slide['desc']) ?></p>
+          <div class="hs-actions">
+            <a href="<?= htmlspecialchars($slide['cta_primary_href']) ?>"
+               <?= $slide['cta_primary_ext'] ? 'target="_blank" rel="noopener"' : '' ?>
+               class="btn btn-primary btn-lg">
+              <span class="btn-label"><?= htmlspecialchars($slide['cta_primary_label']) ?></span>
+            </a>
+            <a href="<?= htmlspecialchars($slide['cta_ghost_href']) ?>"
+               class="btn hs-ghost-btn btn-lg">
+              <span class="btn-label"><?= htmlspecialchars($slide['cta_ghost_label']) ?></span>
+            </a>
           </div>
         </div>
       </div>
     </div>
+    <?php endforeach; ?>
   </div>
+
+  <!-- Controls -->
+  <button class="hs-arrow hs-prev" id="hsPrev" type="button" aria-label="Previous slide">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="hs-arrow hs-next" id="hsNext" type="button" aria-label="Next slide">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
+  <!-- Dots -->
+  <div class="hs-dots" role="tablist" aria-label="Slide navigation">
+    <?php foreach ($hero_slides as $i => $slide): ?>
+    <button class="hs-dot<?= $i === 0 ? ' is-active' : '' ?>"
+            type="button"
+            role="tab"
+            aria-selected="<?= $i === 0 ? 'true' : 'false' ?>"
+            aria-label="Go to slide <?= $i + 1 ?>"
+            data-index="<?= $i ?>"></button>
+    <?php endforeach; ?>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="hs-progress" aria-hidden="true">
+    <div class="hs-progress-bar" id="hsProgressBar"></div>
+  </div>
+
+
 </section>
+
+<style>
+/* ═══════════════════════════════════════
+   HERO SLIDER
+═══════════════════════════════════════ */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 900px;
+  overflow: hidden;
+  background: var(--n-900);
+}
+
+/* Track & slides */
+.hs-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.hs-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-o);
+  pointer-events: none;
+}
+.hs-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Background image */
+.hs-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);
+  transition: transform 6s linear;
+}
+.hs-slide.is-active .hs-bg {
+  transform: scale(1);
+}
+
+/* Dark overlay */
+.hs-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(5, 12, 28, 0.88) 0%,
+    rgba(5, 12, 28, 0.70) 50%,
+    rgba(5, 12, 28, 0.45) 100%
+  );
+}
+
+/* Inner content layout */
+.hs-inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--nav-h) + var(--s12));
+  padding-bottom: var(--s20);
+}
+.hs-content {
+  max-width: 640px;
+}
+
+/* Badge */
+.hs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: var(--s6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s var(--ease) 0.1s, transform 0.5s var(--ease) 0.1s;
+}
+.hs-slide.is-active .hs-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hs-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hs-badge span:last-child {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  color: rgba(255,255,255,.85);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Title */
+.hs-title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: -.03em;
+  color: #fff;
+  margin-bottom: var(--s5);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.45);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--ease) 0.22s, transform 0.55s var(--ease) 0.22s;
+}
+.hs-slide.is-active .hs-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hs-blue { color: #60a5fa; }
+
+/* Description */
+.hs-desc {
+  font-size: var(--t-md);
+  line-height: var(--lh-relaxed);
+  color: rgba(255,255,255,.9);
+  margin-bottom: var(--s8);
+  max-width: 520px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--ease) 0.34s, transform 0.55s var(--ease) 0.34s;
+}
+.hs-slide.is-active .hs-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA buttons */
+.hs-actions {
+  display: flex;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--ease) 0.44s, transform 0.55s var(--ease) 0.44s;
+}
+.hs-slide.is-active .hs-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hs-ghost-btn {
+  background: rgba(255,255,255,.1) !important;
+  border: 1px solid rgba(255,255,255,.3) !important;
+  color: #fff !important;
+  backdrop-filter: blur(4px);
+}
+.hs-ghost-btn:hover {
+  background: rgba(255,255,255,.2) !important;
+}
+.hs-ghost-btn .btn-label {
+  color: #fff !important;
+}
+
+/* Arrow buttons */
+.hs-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  transition: background var(--t-fast) var(--ease-o), transform var(--t-fast) var(--ease-o);
+}
+.hs-arrow:hover {
+  background: rgba(255,255,255,.25);
+  transform: translateY(-50%) scale(1.08);
+}
+.hs-prev { left: var(--s6); }
+.hs-next { right: var(--s6); }
+
+/* Dots */
+.hs-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: var(--s2);
+}
+.hs-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--t-base) var(--ease-o), width var(--t-base) var(--ease-o), border-radius var(--t-base) var(--ease-o);
+}
+.hs-dot.is-active {
+  background: #fff;
+  width: 28px;
+  border-radius: 4px;
+}
+
+/* Progress bar */
+.hs-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,.15);
+  z-index: 10;
+}
+.hs-progress-bar {
+  height: 100%;
+  background: var(--brand-blue);
+  width: 0%;
+  transition: width linear;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hs-inner {
+    padding-bottom: var(--s16);
+  }
+  .hs-arrow { display: none; }
+  .hs-dots { bottom: 24px; }
+}
+</style>
+
+<script>
+(function () {
+  const SLIDE_DURATION = 6000; // ms per slide
+  const slides  = document.querySelectorAll('.hs-slide');
+  const dots    = document.querySelectorAll('.hs-dot');
+  const prevBtn = document.getElementById('hsPrev');
+  const nextBtn = document.getElementById('hsNext');
+  const bar     = document.getElementById('hsProgressBar');
+
+  if (!slides.length) return;
+
+  let current  = 0;
+  let timer    = null;
+  let barTimer = null;
+
+  function goTo(index) {
+    // Deactivate current
+    slides[current].classList.remove('is-active');
+    slides[current].setAttribute('aria-hidden', 'true');
+    dots[current].classList.remove('is-active');
+    dots[current].setAttribute('aria-selected', 'false');
+
+    current = (index + slides.length) % slides.length;
+
+    // Activate new
+    slides[current].classList.add('is-active');
+    slides[current].setAttribute('aria-hidden', 'false');
+    dots[current].classList.add('is-active');
+    dots[current].setAttribute('aria-selected', 'true');
+
+    resetProgress();
+  }
+
+  function resetProgress() {
+    clearTimeout(barTimer);
+    if (bar) {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      // Force reflow
+      bar.offsetWidth;
+      bar.style.transition = 'width ' + SLIDE_DURATION + 'ms linear';
+      bar.style.width = '100%';
+    }
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), SLIDE_DURATION);
+  }
+
+  function restartAuto() {
+    clearInterval(timer);
+    startAuto();
+  }
+
+  // Arrow controls
+  if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); restartAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); restartAuto(); });
+
+  // Dot controls
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); restartAuto(); });
+  });
+
+  // Touch / swipe support
+  let touchStartX = 0;
+  const track = document.getElementById('hsTrack');
+  if (track) {
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        goTo(diff > 0 ? current + 1 : current - 1);
+        restartAuto();
+      }
+    }, { passive: true });
+  }
+
+  // Pause on hover
+  const slider = document.getElementById('heroSlider');
+  if (slider) {
+    slider.addEventListener('mouseenter', () => clearInterval(timer));
+    slider.addEventListener('mouseleave', () => startAuto());
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { goTo(current - 1); restartAuto(); }
+    if (e.key === 'ArrowRight') { goTo(current + 1); restartAuto(); }
+  });
+
+  // Kick off
+  resetProgress();
+  startAuto();
+})();
+</script>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
