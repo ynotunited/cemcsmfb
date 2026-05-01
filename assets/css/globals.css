@@ -1865,35 +1865,32 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (max-width: 430px) {
-  :root {
-    --nav-h: 110px;
-  }
-
   .nav-inner {
-    flex-wrap: wrap;
-    align-content: center;
-    gap: 6px 8px;
-    padding: 8px 10px;
+    flex-wrap: nowrap;
+    align-content: initial;
+    gap: 6px;
+    padding: 0 10px;
   }
 
   .nav-logo {
-    flex: 1 0 100%;
+    flex: 0 1 auto;
   }
 
   .nav-logo-image {
-    max-width: 160px;
+    max-width: 110px;
   }
 
   .nav-actions {
-    width: 100%;
+    width: auto;
     justify-content: flex-end;
     gap: 6px;
-    padding-right: 6px;
+    padding-right: 4px;
+    margin-left: auto;
   }
 
   .nav-cta .btn-primary {
     min-height: 32px;
-    padding: 0 10px;
+    padding: 0 8px;
     font-size: 9px;
     line-height: 1;
   }
@@ -1905,27 +1902,23 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (max-width: 390px) {
-  :root {
-    --nav-h: 116px;
-  }
-
   .nav-inner {
-    gap: 5px 6px;
-    padding: 8px 8px;
+    gap: 5px;
+    padding: 0 8px;
   }
 
   .nav-logo-image {
-    max-width: 148px;
+    max-width: 96px;
   }
 
   .nav-actions {
     gap: 4px;
-    padding-right: 8px;
+    padding-right: 2px;
   }
 
   .nav-cta .btn-primary {
     min-height: 30px;
-    padding: 0 8px;
+    padding: 0 7px;
     font-size: 8px;
   }
 
