@@ -5,8 +5,8 @@
 <?php
 $hero_slides = [
   [
-    // Cheerful African American woman at ATM with credit card — account / banking
-    'image'    => 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1600&q=80&auto=format&fit=crop',
+    // Young woman in Lagos checking her phone — account / everyday banking
+    'image'    => 'https://images.pexels.com/photos/30675542/pexels-photo-30675542.jpeg?cs=srgb&dl=pexels-ninthgrid-2149521550-30675542.jpg&fm=jpg',
     'badge'    => 'CBN Licensed · NDIC Insured · Tier 1 MFB',
     'title'    => 'Banking built for<br/><span class="hs-blue">every</span> Nigerian.',
     'desc'     => 'From Chevron employees to small businesses and the wider community — CEMCS MFB delivers loans, savings, and digital banking that works for you.',
@@ -17,8 +17,8 @@ $hero_slides = [
     'cta_ghost_href'    => APP_URL . '/loans',
   ],
   [
-    // Black woman holding credit card and smartphone — savings / digital payments
-    'image'    => 'https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=1600&q=80&auto=format&fit=crop',
+    // Black smart woman using smartphone — savings / digital payments
+    'image'    => 'https://images.pexels.com/photos/9430885/pexels-photo-9430885.jpeg?cs=srgb&dl=pexels-gabby-k-9430885.jpg&fm=jpg',
     'badge'    => 'Up to 18% p.a. · Zero Fees on Member Transfers',
     'title'    => 'Save smarter.<br/><span class="hs-blue">Earn</span> more.',
     'desc'     => 'Six account types designed to match every savings goal — from everyday transactions to long-term fixed deposits earning up to 18% p.a.',
@@ -29,8 +29,8 @@ $hero_slides = [
     'cta_ghost_href'    => APP_URL . '/fixed-deposit',
   ],
   [
-    // Black man smiling in suit — professional / loan (photo by Oladimeji Odunsi)
-    'image'    => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80&auto=format&fit=crop&fp-x=0.5&fp-y=0.35',
+    // African man in a black suit — professional / loan
+    'image'    => 'https://images.pexels.com/photos/30033723/pexels-photo-30033723.jpeg?cs=srgb&dl=pexels-mustapha-damilola-458083529-30033723.jpg&fm=jpg',
     'badge'    => '24-Hour Approval · Salary-Backed Loans Up to ₦10M',
     'title'    => 'The right loan<br/>for <span class="hs-blue">every</span> need.',
     'desc'     => 'Seven specialised loan products for CNL employees, contract staff, Spy Police, and businesses — with disbursement in as little as 24 hours.',
@@ -41,8 +41,8 @@ $hero_slides = [
     'cta_ghost_href'    => APP_URL . '/loans',
   ],
   [
-    // Black man looking at smartphone — mobile banking
-    'image'    => 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1600&q=80&auto=format&fit=crop',
+    // African American woman in office — finance, mobile banking, and app usage
+    'image'    => 'https://images.pexels.com/photos/7876446/pexels-photo-7876446.jpeg?cs=srgb&dl=pexels-karola-g-7876446.jpg&fm=jpg',
     'badge'    => 'Free Mobile App · NIBSS Instant Payments',
     'title'    => 'Bank from anywhere,<br/><span class="hs-blue">any time.</span>',
     'desc'     => 'Free mobile banking, NIBSS instant payments, Verve debit cards, and convenient cash deposit channels — all in one seamless experience.',
